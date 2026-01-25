@@ -30,7 +30,13 @@ struct GroupsListView: View {
                     .listStyle(.plain)
                 }
             }
-            .navigationTitle("Groups")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Groups")
+                        .font(.custom("OpenSans-Bold", size: 20))
+                }
+            }
             .navigationDestination(for: ItemGroup.self) { group in
                 GroupDetailView(groupId: group.id, viewModel: viewModel)
             }

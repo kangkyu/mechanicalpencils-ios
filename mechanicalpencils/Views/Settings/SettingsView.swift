@@ -76,7 +76,13 @@ struct SettingsView: View {
                     .disabled(authViewModel.isLoading)
                 }
             }
-            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Settings")
+                        .font(.custom("OpenSans-Bold", size: 20))
+                }
+            }
         }
     }
 }

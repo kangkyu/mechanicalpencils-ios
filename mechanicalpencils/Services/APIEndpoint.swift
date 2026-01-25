@@ -18,6 +18,7 @@ enum APIEndpoint {
     case makers
     case itemGroups
     case itemGroup(id: Int)
+    case userProfile(id: Int)
 
     var path: String {
         switch self {
@@ -45,6 +46,8 @@ enum APIEndpoint {
             return "/api/v1/item_groups"
         case .itemGroup(let id):
             return "/api/v1/item_groups/\(id)"
+        case .userProfile(let id):
+            return "/api/v1/users/\(id)"
         }
     }
 

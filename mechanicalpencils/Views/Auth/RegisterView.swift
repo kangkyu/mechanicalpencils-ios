@@ -67,9 +67,12 @@ struct RegisterView: View {
                 Spacer()
             }
             .padding(.top)
-            .navigationTitle("Create Account")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Create Account")
+                        .font(.custom("OpenSans-Bold", size: 20))
+                }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         dismiss()

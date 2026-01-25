@@ -19,7 +19,7 @@ struct LoginView: View {
                 VStack(spacing: 8) {
                     Image(systemName: "pencil.circle.fill")
                         .font(.system(size: 80))
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(Color(red: 0.5, green: 0.3, blue: 0.6))
 
                     Text("Mechanical Pencils")
                         .font(.custom("OpenSans-Bold", size: 28))

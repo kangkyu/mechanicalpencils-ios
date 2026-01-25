@@ -35,11 +35,13 @@ struct ItemDetail: Codable, Identifiable {
     let owned: Bool
     let hasProof: Bool
     let ownershipId: Int?
+    let proofs: [ItemProof]?
+    let ownersCount: Int?
     let createdAt: String?
     let updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, title, description, maker, owned
+        case id, title, description, maker, owned, proofs
         case modelNumber = "model_number"
         case tipRetractable = "tip_retractable"
         case eraserAttached = "eraser_attached"
@@ -49,8 +51,25 @@ struct ItemDetail: Codable, Identifiable {
         case thumbnailUrl = "thumbnail_url"
         case hasProof = "has_proof"
         case ownershipId = "ownership_id"
+        case ownersCount = "owners_count"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+    }
+}
+
+struct ItemProof: Codable, Identifiable, Hashable {
+    let id: Int
+    let userId: Int
+    let userEmail: String
+    let proofUrl: String
+    let createdAt: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userId = "user_id"
+        case userEmail = "user_email"
+        case proofUrl = "proof_url"
+        case createdAt = "created_at"
     }
 }
 

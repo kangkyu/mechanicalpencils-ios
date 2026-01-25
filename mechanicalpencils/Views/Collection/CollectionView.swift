@@ -33,7 +33,13 @@ struct CollectionView: View {
                     .listStyle(.plain)
                 }
             }
-            .navigationTitle("My Collection (\(viewModel.totalCount))")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("My Collection (\(viewModel.totalCount))")
+                        .font(.custom("OpenSans-Bold", size: 20))
+                }
+            }
             .refreshable {
                 await viewModel.fetchCollection()
             }

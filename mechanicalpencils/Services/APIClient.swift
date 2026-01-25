@@ -116,6 +116,12 @@ class APIClient {
         try await request(.itemGroup(id: id))
     }
 
+    // MARK: - Users
+
+    func fetchUserProfile(id: Int) async throws -> UserProfileResponse {
+        try await request(.userProfile(id: id))
+    }
+
     // MARK: - Private Helpers
 
     private func request<T: Decodable>(_ endpoint: APIEndpoint, body: [String: Any]? = nil) async throws -> T {

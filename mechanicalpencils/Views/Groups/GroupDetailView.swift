@@ -28,10 +28,15 @@ struct GroupDetailView: View {
                     }
                 }
                 .listStyle(.plain)
-                .navigationTitle(group.title)
-            }
+                }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(viewModel.selectedGroup?.title ?? "")
+                    .font(.custom("OpenSans-Bold", size: 20))
+            }
+        }
         .task {
             await viewModel.fetchGroupDetail(id: groupId)
         }

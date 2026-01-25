@@ -142,9 +142,12 @@ struct ProofUploadView: View {
                 .padding(.horizontal)
                 .padding(.bottom)
             }
-            .navigationTitle("Proof Photo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Proof Photo")
+                        .font(.custom("OpenSans-Bold", size: 20))
+                }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Done") {
                         dismiss()

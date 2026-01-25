@@ -145,6 +145,42 @@ struct ItemDetailView: View {
                         .padding(.horizontal)
                     }
 
+                    // Proof Photos from Owners
+                    if let proofs = item.proofs, !proofs.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            HStack {
+                                Text("Proof Photos")
+                                    .font(.custom("OpenSans-SemiBold", size: 17))
+                                Spacer()
+                                if let count = item.ownersCount {
+                                    Text("\(count) owners")
+                                        .font(.custom("OpenSans-Regular", size: 15))
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 12) {
+                                ForEach(proofs) { proof in
+                                    NavigationLink(destination: UserProfileView(userId: proof.userId)) {
+                                        ProofPhotoCard(proof: proof)
+                                    }
+                                }
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                    } else if let ownersCount = item.ownersCount, ownersCount > 0 {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Owners")
+                                .font(.custom("OpenSans-SemiBold", size: 17))
+                            Text("\(ownersCount) people own this pencil")
+                                .font(.custom("OpenSans-Regular", size: 15))
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                    }
+
                     Spacer(minLength: 20)
                 }
             } else if itemsViewModel.isLoading {
@@ -171,6 +207,45 @@ struct FeatureRow: View {
             Spacer()
             Text(value)
                 .font(.custom("OpenSans-Regular", size: 15))
+        }
+    }
+}
+
+struct ProofPhotoCard: View {
+    let proof: ItemProof
+
+    var body: some View {
+        VStack(spacing: 4) {
+            AsyncImage(url: URL(string: proof.proofUrl)) { phase in
+                switch phase {
+                case .empty:
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.2))
+                        .frame(width: 100, height: 100)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipped()
+                case .failure:
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.2))
+                        .frame(width: 100, height: 100)
+                        .overlay {
+                            Image(systemName: "photo")
+                                .foregroundStyle(.gray)
+                        }
+                @unknown default:
+                    EmptyView()
+                }
+            }
+            .cornerRadius(8)
+
+            Text(proof.userEmail.components(separatedBy: "@").first ?? "User")
+                .font(.custom("OpenSans-Regular", size: 12))
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
         }
     }
 }

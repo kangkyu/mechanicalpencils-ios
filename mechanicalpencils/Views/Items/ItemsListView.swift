@@ -31,7 +31,13 @@ struct ItemsListView: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle("Pencils")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Pencils")
+                        .font(.custom("OpenSans-Bold", size: 20))
+                }
+            }
             .navigationDestination(for: Item.self) { item in
                 ItemDetailView(itemId: item.id, itemsViewModel: viewModel)
             }
