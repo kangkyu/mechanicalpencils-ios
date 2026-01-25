@@ -11,37 +11,7 @@ struct CollectionView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                if !viewModel.itemGroups.isEmpty {
-                    Section("Groups") {
-                        ForEach(viewModel.itemGroups) { group in
-                            HStack {
-                                Text(group.title)
-                                Spacer()
-                                if let count = group.itemsCount {
-                                    Text("\(count)")
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                        }
-                    }
-                }
-
-                Section("Items (\(viewModel.totalCount))") {
-                    ForEach(viewModel.items) { item in
-                        CollectionItemRow(item: item)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                selectedItem = item
-                            }
-                    }
-                }
-            }
-            .navigationTitle("My Collection")
-            .refreshable {
-                await viewModel.fetchCollection()
-            }
-            .overlay {
+            Group {
                 if viewModel.isLoading && viewModel.items.isEmpty {
                     ProgressView("Loading...")
                 } else if viewModel.items.isEmpty && !viewModel.isLoading {
@@ -50,7 +20,22 @@ struct CollectionView: View {
                         systemImage: "tray",
                         description: Text("Items you add to your collection will appear here")
                     )
+                } else {
+                    List {
+                        ForEach(viewModel.items) { item in
+                            CollectionItemRow(item: item)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    selectedItem = item
+                                }
+                        }
+                    }
+                    .listStyle(.plain)
                 }
+            }
+            .navigationTitle("My Collection (\(viewModel.totalCount))")
+            .refreshable {
+                await viewModel.fetchCollection()
             }
             .sheet(item: $selectedItem) { item in
                 ProofUploadView(item: item, viewModel: viewModel)

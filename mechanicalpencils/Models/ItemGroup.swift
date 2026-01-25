@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct ItemGroup: Codable, Identifiable {
+struct ItemGroup: Codable, Identifiable, Hashable {
     let id: Int
     let title: String
     let link: String?
@@ -15,6 +15,14 @@ struct ItemGroup: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, title, link, items
         case itemsCount = "items_count"
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    static func == (lhs: ItemGroup, rhs: ItemGroup) -> Bool {
+        lhs.id == rhs.id
     }
 }
 

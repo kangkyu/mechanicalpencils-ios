@@ -30,6 +30,11 @@ struct MainTabView: View {
                     Label("Browse", systemImage: "pencil.and.list.clipboard")
                 }
 
+            GroupsListView()
+                .tabItem {
+                    Label("Groups", systemImage: "folder")
+                }
+
             CollectionView()
                 .tabItem {
                     Label("Collection", systemImage: "tray.full")
