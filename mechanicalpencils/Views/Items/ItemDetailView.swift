@@ -41,19 +41,18 @@ struct ItemDetailView: View {
                     // Title and Maker
                     VStack(spacing: 8) {
                         Text(item.title)
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .font(.custom("OpenSans-Bold", size: 28))
                             .multilineTextAlignment(.center)
 
                         if let maker = item.maker {
                             Text(maker.title ?? "")
-                                .font(.title3)
+                                .font(.custom("OpenSans-SemiBold", size: 20))
                                 .foregroundStyle(.secondary)
                         }
 
                         if let modelNumber = item.modelNumber {
                             Text("Model: \(modelNumber)")
-                                .font(.subheadline)
+                                .font(.custom("OpenSans-Regular", size: 15))
                                 .foregroundStyle(.tertiary)
                         }
                     }
@@ -91,9 +90,9 @@ struct ItemDetailView: View {
                     if let description = item.description, !description.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Description")
-                                .font(.headline)
+                                .font(.custom("OpenSans-SemiBold", size: 17))
                             Text(description)
-                                .font(.body)
+                                .font(.custom("OpenSans-Regular", size: 17))
                                 .foregroundStyle(.secondary)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -103,7 +102,7 @@ struct ItemDetailView: View {
                     // Features
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Features")
-                            .font(.headline)
+                            .font(.custom("OpenSans-SemiBold", size: 17))
 
                         if let tipRetractable = item.tipRetractable {
                             FeatureRow(label: "Tip Retractable", value: tipRetractable)
@@ -120,7 +119,7 @@ struct ItemDetailView: View {
                     if item.jetpensUrl != nil || item.blickUrl != nil {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Where to Buy")
-                                .font(.headline)
+                                .font(.custom("OpenSans-SemiBold", size: 17))
 
                             if let jetpensUrl = item.jetpensUrl, let url = URL(string: jetpensUrl) {
                                 Link(destination: url) {
@@ -167,9 +166,11 @@ struct FeatureRow: View {
     var body: some View {
         HStack {
             Text(label)
+                .font(.custom("OpenSans-Regular", size: 15))
                 .foregroundStyle(.secondary)
             Spacer()
             Text(value)
+                .font(.custom("OpenSans-Regular", size: 15))
         }
     }
 }

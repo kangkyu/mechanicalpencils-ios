@@ -15,16 +15,20 @@ struct SettingsView: View {
                     Section("Account") {
                         HStack {
                             Text("Email")
+                                .font(.custom("OpenSans-Regular", size: 17))
                             Spacer()
                             Text(user.email)
+                                .font(.custom("OpenSans-Regular", size: 17))
                                 .foregroundStyle(.secondary)
                         }
 
                         if user.admin {
                             HStack {
                                 Text("Role")
+                                    .font(.custom("OpenSans-Regular", size: 17))
                                 Spacer()
                                 Text("Admin")
+                                    .font(.custom("OpenSans-Regular", size: 17))
                                     .foregroundStyle(.blue)
                             }
                         }
@@ -34,14 +38,17 @@ struct SettingsView: View {
                 Section("About") {
                     HStack {
                         Text("Version")
+                            .font(.custom("OpenSans-Regular", size: 17))
                         Spacer()
                         Text("1.0.0")
+                            .font(.custom("OpenSans-Regular", size: 17))
                             .foregroundStyle(.secondary)
                     }
 
                     Link(destination: URL(string: "https://github.com")!) {
                         HStack {
                             Text("Source Code")
+                                .font(.custom("OpenSans-Regular", size: 17))
                             Spacer()
                             Image(systemName: "arrow.up.right.square")
                                 .foregroundStyle(.secondary)
@@ -61,6 +68,7 @@ struct SettingsView: View {
                                 ProgressView()
                             } else {
                                 Text("Sign Out")
+                                    .font(.custom("OpenSans-SemiBold", size: 17))
                             }
                             Spacer()
                         }

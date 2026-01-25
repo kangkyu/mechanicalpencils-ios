@@ -33,7 +33,7 @@ struct RegisterView: View {
 
                 if let error = authViewModel.errorMessage {
                     Text(error)
-                        .font(.caption)
+                        .font(.custom("OpenSans-Regular", size: 12))
                         .foregroundStyle(.red)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
@@ -56,6 +56,7 @@ struct RegisterView: View {
                             .frame(maxWidth: .infinity)
                     } else {
                         Text("Create Account")
+                            .font(.custom("OpenSans-SemiBold", size: 17))
                             .frame(maxWidth: .infinity)
                     }
                 }

@@ -100,18 +100,18 @@ struct ItemRowView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)
-                    .font(.headline)
+                    .font(.custom("OpenSans-SemiBold", size: 17))
                     .lineLimit(2)
 
                 if let maker = item.maker {
                     Text(maker)
-                        .font(.subheadline)
+                        .font(.custom("OpenSans-Regular", size: 15))
                         .foregroundStyle(.secondary)
                 }
 
                 if let modelNumber = item.modelNumber {
                     Text(modelNumber)
-                        .font(.caption)
+                        .font(.custom("OpenSans-Regular", size: 12))
                         .foregroundStyle(.tertiary)
                 }
             }

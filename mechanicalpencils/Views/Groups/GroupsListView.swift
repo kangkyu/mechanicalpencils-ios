@@ -51,11 +51,11 @@ struct GroupRowView: View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text(group.title)
-                    .font(.headline)
+                    .font(.custom("OpenSans-SemiBold", size: 17))
 
                 if let count = group.itemsCount {
                     Text("\(count) items")
-                        .font(.subheadline)
+                        .font(.custom("OpenSans-Regular", size: 15))
                         .foregroundStyle(.secondary)
                 }
             }
@@ -63,7 +63,7 @@ struct GroupRowView: View {
             Spacer()
 
             Image(systemName: "chevron.right")
-                .font(.caption)
+                .font(.custom("OpenSans-Regular", size: 12))
                 .foregroundStyle(.tertiary)
         }
         .padding(.vertical, 4)

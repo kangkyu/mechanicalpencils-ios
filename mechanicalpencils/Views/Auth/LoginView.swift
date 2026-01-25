@@ -22,11 +22,10 @@ struct LoginView: View {
                         .foregroundStyle(.blue)
 
                     Text("Mechanical Pencils")
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(.custom("OpenSans-Bold", size: 28))
 
                     Text("Track your collection")
-                        .font(.subheadline)
+                        .font(.custom("OpenSans-Regular", size: 15))
                         .foregroundStyle(.secondary)
                 }
 
@@ -44,7 +43,7 @@ struct LoginView: View {
 
                 if let error = authViewModel.errorMessage {
                     Text(error)
-                        .font(.caption)
+                        .font(.custom("OpenSans-Regular", size: 12))
                         .foregroundStyle(.red)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
@@ -60,6 +59,7 @@ struct LoginView: View {
                             .frame(maxWidth: .infinity)
                     } else {
                         Text("Sign In")
+                            .font(.custom("OpenSans-SemiBold", size: 17))
                             .frame(maxWidth: .infinity)
                     }
                 }
@@ -70,7 +70,7 @@ struct LoginView: View {
                 Button("Create Account") {
                     showRegister = true
                 }
-                .font(.subheadline)
+                .font(.custom("OpenSans-Regular", size: 15))
 
                 Spacer()
             }

@@ -10,9 +10,22 @@
 		A846E3672F25D04C00EF0BEA /* mechanicalpencils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mechanicalpencils.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A87704E92F25F19100409073 /* Exceptions for "mechanicalpencils" folder in "mechanicalpencils" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A846E3662F25D04C00EF0BEA /* mechanicalpencils */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A846E3692F25D04C00EF0BEA /* mechanicalpencils */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A87704E92F25F19100409073 /* Exceptions for "mechanicalpencils" folder in "mechanicalpencils" target */,
+			);
 			path = mechanicalpencils;
 			sourceTree = "<group>";
 		};
@@ -256,6 +269,7 @@
 				DEVELOPMENT_TEAM = RRBHHF4KN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mechanicalpencils/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +302,7 @@
 				DEVELOPMENT_TEAM = RRBHHF4KN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mechanicalpencils/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

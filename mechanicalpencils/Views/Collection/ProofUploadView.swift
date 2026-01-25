@@ -39,10 +39,10 @@ struct ProofUploadView: View {
 
                     VStack(alignment: .leading) {
                         Text(item.title)
-                            .font(.headline)
+                            .font(.custom("OpenSans-SemiBold", size: 17))
                         if let maker = item.maker {
                             Text(maker)
-                                .font(.subheadline)
+                                .font(.custom("OpenSans-Regular", size: 15))
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -58,7 +58,7 @@ struct ProofUploadView: View {
                 if let proofUrl = item.proofUrl, let url = URL(string: proofUrl) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Current Proof")
-                            .font(.headline)
+                            .font(.custom("OpenSans-SemiBold", size: 17))
 
                         AsyncImage(url: url) { phase in
                             switch phase {
@@ -82,7 +82,7 @@ struct ProofUploadView: View {
                    let uiImage = UIImage(data: imageData) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("New Proof")
-                            .font(.headline)
+                            .font(.custom("OpenSans-SemiBold", size: 17))
 
                         Image(uiImage: uiImage)
                             .resizable()
