@@ -16,7 +16,7 @@ struct ContentView: View {
                 LoginView(authViewModel: authViewModel)
             }
         }
-        .animation(.easeInOut, value: authViewModel.isAuthenticated)
+        .animation(authViewModel.isAuthenticated ? .easeInOut : nil, value: authViewModel.isAuthenticated)
     }
 }
 
